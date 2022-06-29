@@ -24,5 +24,7 @@ public class App {
        System.out.println("\nThe index of the element sissa = " + positionalNames.indexOf(sissa));
        System.out.println("\nThe index of the element stored at last position = " + positionalNames.indexOf(positionalNames.last()));
 
+       System.out.println(carolina);
+
     }
 }
