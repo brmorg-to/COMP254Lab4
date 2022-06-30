@@ -1,6 +1,6 @@
 package com.exercise2.bruno.morgado;
 
-public class SinglyLInkedList<E> {
+public class SinglyLinkedList<E> implements Cloneable{
     //---------------- nested Node class ----------------
     private static class Node<E>{
         private E element;      // reference to the element stored at this node
@@ -23,7 +23,23 @@ public class SinglyLInkedList<E> {
     private Node<E> head = null;        // head node of the list (or null if empty)
     private Node<E> tail = null;        // last node of the list (or null if empty)
     private int size = 0;               // number of nodes in the list
-    public SinglyLInkedList() { }       // constructs an initially empty list
+    public SinglyLinkedList() { }       // constructs an initially empty list
+    @Override
+    protected SinglyLinkedList<E> clone() throws CloneNotSupportedException {
+        SinglyLinkedList<E> other = (SinglyLinkedList<E>) super.clone( ); //safe cast
+//        if (size > 0) {
+//            other.head = new Node<>(head.getElement( ), null);
+//            Node<E> walk = head.getNext( );         // walk through remainder of original list
+//            Node<E> otherTail = other.head;         // remember most recently created node
+//            while (walk != null) {                  // make a new node storing same element
+//                Node<E> newest = new Node<>(walk.getElement( ), null);
+//                otherTail.setNext(newest); // link previous node to this one
+//                otherTail = newest;
+//                walk = walk.getNext( );
+//            }
+//        }
+        return other;
+    }
 
     // access methods
     public int size() {
@@ -75,16 +91,31 @@ public class SinglyLInkedList<E> {
         }
         return answer;
     }
-
     public void traverse () {
         Node<E> actualNode = head;
         if(actualNode == null) {
             System.out.println("No elements");
         }
         while(actualNode != null) {
-            System.out.println(actualNode.getElement());
+            System.out.print(actualNode.getElement() + " ");
             actualNode = actualNode.getNext();
         }
+    }
+    public void concatenate (SinglyLinkedList<E> list2) throws CloneNotSupportedException {
+
+        if(list2.isEmpty()){
+            System.out.println("List 2 is empty. Nothing to do.");
+        }
+        SinglyLinkedList<E> clone = list2.clone();
+
+        if(head == null) {
+            head = clone.head;
+        }
+        tail.setNext(clone.head);
+        size += clone.size();
+        list2.head = null;
+        list2.tail = null;
+        list2.size = 0;
     }
 
 }

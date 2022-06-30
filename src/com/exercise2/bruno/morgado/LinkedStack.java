@@ -1,7 +1,7 @@
 package com.exercise2.bruno.morgado;
 
 public class LinkedStack<E> {
-    private SinglyLInkedList<E> list = new SinglyLInkedList<>();
+    private SinglyLinkedList<E> list = new SinglyLinkedList<>();
 
     public LinkedStack() { }
 
