@@ -27,17 +27,17 @@ public class SinglyLinkedList<E> implements Cloneable{
     @Override
     protected SinglyLinkedList<E> clone() throws CloneNotSupportedException {
         SinglyLinkedList<E> other = (SinglyLinkedList<E>) super.clone( ); //safe cast
-//        if (size > 0) {
-//            other.head = new Node<>(head.getElement( ), null);
-//            Node<E> walk = head.getNext( );         // walk through remainder of original list
-//            Node<E> otherTail = other.head;         // remember most recently created node
-//            while (walk != null) {                  // make a new node storing same element
-//                Node<E> newest = new Node<>(walk.getElement( ), null);
-//                otherTail.setNext(newest); // link previous node to this one
-//                otherTail = newest;
-//                walk = walk.getNext( );
-//            }
-//        }
+        if (size > 0) {
+            other.head = new Node<>(head.getElement( ), null);
+            Node<E> walk = head.getNext( );         // walk through remainder of original list
+            Node<E> otherTail = other.head;         // remember most recently created node
+            while (walk != null) {                  // make a new node storing same element
+                Node<E> newest = new Node<>(walk.getElement( ), null);
+                otherTail.setNext(newest); // link previous node to this one
+                otherTail = newest;
+                walk = walk.getNext( );
+            }
+        }
         return other;
     }
 
@@ -101,21 +101,17 @@ public class SinglyLinkedList<E> implements Cloneable{
             actualNode = actualNode.getNext();
         }
     }
-    public void concatenate (SinglyLinkedList<E> list2) throws CloneNotSupportedException {
-
+    public void concatenate (SinglyLinkedList<E> list2) {
         if(list2.isEmpty()){
             System.out.println("List 2 is empty. Nothing to do.");
         }
-        SinglyLinkedList<E> clone = list2.clone();
-
         if(head == null) {
-            head = clone.head;
+            head = list2.head;
         }
-        tail.setNext(clone.head);
-        size += clone.size();
+        tail.setNext(list2.head);
+        size += list2.size();
         list2.head = null;
         list2.tail = null;
         list2.size = 0;
     }
-
 }

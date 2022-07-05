@@ -1,13 +1,7 @@
 package com.exercise3.bruno.morgado;
 
 public class App {
-
-//    public static void printObjectSize(Object object) {
-//        System.out.println("Object type: " + object.getClass() +
-//                ", size: " + InstrumentationAgent.getObjectSize(object) + " bytes");
-//    }
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
         LinkedQueue<Integer> firstQueue = new LinkedQueue<>();
         firstQueue.enqueue(1);
         firstQueue.enqueue(2);
@@ -30,11 +24,8 @@ public class App {
         secondQueue.traverse();
         System.out.println();
 
-        try {
-            firstQueue.concatenate(secondQueue);
-        } catch (CloneNotSupportedException e) {
-            throw new RuntimeException(e);
-        }
+        firstQueue.concatenate(secondQueue);
+
         System.out.println("\nFirst Linked Queue after concatenation:");
         firstQueue.traverse();
         System.out.println();

@@ -18,6 +18,10 @@ public class App {
         transfer(stack, reversed);
         System.out.println("\nThe REVERSED stack is:");
         reversed.traverse();
+
+        // Check the status of the original stack.
+        System.out.println("\nThe ORIGINAL is stack has: ");
+        stack.traverse();
     }
 
     /**

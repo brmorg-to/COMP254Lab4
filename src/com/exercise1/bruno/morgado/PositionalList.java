@@ -1,5 +1,7 @@
 package com.exercise1.bruno.morgado;
 
+import java.util.NoSuchElementException;
+
 public interface PositionalList<E> {
     /** Returns the number of elements in the list.*/
     int size();
@@ -36,4 +38,20 @@ public interface PositionalList<E> {
 
     /** Removes the element stored at Position p and returns it (invalidating p). */
     E remove (Position<E> p) throws IllegalArgumentException;
+
+    /** Returns the index of Position p.*/
+    default int indexOf(Position<E> p) throws NoSuchElementException{
+        int index = 0;
+        Position<E> temp = first();
+
+        while(temp != null && temp != p){
+            temp = after(temp);
+            index++;
+        }
+
+        if(index > size() - 1) {
+            throw new NoSuchElementException("\nPosition not found in List.");
+        }
+        return index;
+    }
 }

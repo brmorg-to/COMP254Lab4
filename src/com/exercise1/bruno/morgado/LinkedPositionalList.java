@@ -157,21 +157,22 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
         return answer;
     }
 
+    // AN alternative approach to get the index of a Position in a Positional List
     /** Returns the index of Position p.*/
-    public int indexOf(Position<E> p) throws IllegalArgumentException {
-        Node<E> node = new Node<>(null, null, null);
-        try{
-            node = validate(p);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-        Node<E> temp = header.getNext();
-        int index = 0;
-
-        while(temp != null && !temp.element.equals(node.element)){
-            temp = temp.getNext();
-            index++;
-        }
-        return index;
-    }
+//    public int indexOf(Position<E> p) throws IllegalArgumentException {
+//        Node<E> node = new Node<>(null, null, null);
+//        try{
+//            node = validate(p);
+//        } catch (IllegalArgumentException e) {
+//            e.printStackTrace();
+//        }
+//        Node<E> temp = header.getNext();
+//        int index = 0;
+//
+//        while(temp != null && !temp.element.equals(node.element)){
+//            temp = temp.getNext();
+//            index++;
+//        }
+//        return index;
+//    }
 }
